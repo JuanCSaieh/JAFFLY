@@ -1,0 +1,9 @@
+<tr>
+  <td><%= flight.id %></td>
+  <td><%= flight.airline.title %></td>
+  <td><%= flight.origin %></td>
+  <td><%= flight.destination %></td>
+  <td><%= Time.at(flight.departure_time) %></td>
+  <td><%= Time.at(flight.arrival_time) %></td>
+  <td><%= link_to 'Add' if current_user %></td>
+</tr>
