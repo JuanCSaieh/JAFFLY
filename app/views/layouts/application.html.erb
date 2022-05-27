@@ -12,20 +12,68 @@
 
   <body>
 
-  
+  <nav class="navbar navbar-expand-lg navbar-dark", style="background-color: #fd7e14;">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-  <p class="navbar-text float-right">
-    <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-    <% end %>
-  </p>
+        <a class="navbar-brand" href="#">
+          <%= image_tag("logo.png", width: 80, height: 70) %>
+        </a>
 
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to 'Home', root_path, :class => 'nav-link active' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Vuelos', flights_path, :class => 'nav-link active' %>
+          </li>
 
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'Reserva', reservations_path, :class => 'nav-link active' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link disabled">Reserva</a>
+            </li>
+          <% end %>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Sobre Nosotros</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Contacto</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <% if user_signed_in? %>
+
+              
+            <li class="nav-item">
+              <a class="nav-link active">Bienvenido,  <strong><%= current_user.email %></strong></a>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'Editar Perfil', edit_user_registration_path, :class => 'nav-link active' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link active'  %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Crear Cuenta", new_user_registration_path, :class => 'nav-link active'  %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Inicio Sesion", new_user_session_path, :class => 'nav-link active'  %>
+            </li>
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
 
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
