@@ -1,0 +1,29 @@
+<tr>
+  <td><%= reservation.id %></td>
+  <td><%= reservation.name %></td>
+  <td><%= number_to_currency(reservation.value, :unit => "$") %></td>
+  <td>
+    <div class="row mb-3">
+        <div class="col-1">
+            <% if reservation.paymentStatus %>
+                <button type="button" class="btn btn-success" disabled>Success</button>
+            <% else %>
+                <button type="button" class="btn btn-secondary">Pagar</button>
+            <% end %>
+        </div>
+
+
+        <div class="col-1">
+            <%= link_to 'Editar', edit_reservation_path(reservation), :class => 'btn btn-warning active' %>
+        </div>
+
+        <div class="col-2">
+            <%= link_to 'Escoger', reservation_path(reservation), :class => 'btn btn-warning active' %>
+        </div>
+
+        <div class="col-2">
+            <%= button_to 'Eliminar', reservation_path(reservation), method: :delete, :class => 'btn btn-danger active' %>
+        </div>
+    </div>
+  </td>
+</tr>

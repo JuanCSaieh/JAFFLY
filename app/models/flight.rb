@@ -7,4 +7,5 @@ class Flight < ApplicationRecord
   validates :departure_time, presence: true
   validates :arrival_time, presence: true
   validates :airline, presence: true
+  validates :price, presence: true
 end

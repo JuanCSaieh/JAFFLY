@@ -1,0 +1,25 @@
+<div class="row mb-2 justify-content-md-center">
+    <div class="col-10">
+        <div class="text-center">
+          <h2>Reservas</h2>
+        </div>
+    </div>
+
+    <div class="col-1">
+        <%= link_to 'Crear Reserva', new_reservation_path, :class => 'btn btn-warning active' %>
+    </div>
+  </div>
+
+<table class="table align-middle">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @reservations %>
+  </tbody>
+</table>
