@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_05_27_041551) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "airlines", force: :cascade do |t|
     t.string "title"
     t.string "fs_code"
@@ -23,15 +26,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_041551) do
     t.string "destination"
     t.integer "departure_time"
     t.integer "arrival_time"
-    t.integer "airline_id", null: false
+    t.bigint "airline_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["airline_id"], name: "index_flights_on_airline_id"
   end
 
   create_table "flights_reservations", force: :cascade do |t|
-    t.integer "reservation_id", null: false
-    t.integer "flight_id", null: false
+    t.bigint "reservation_id", null: false
+    t.bigint "flight_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flight_id"], name: "index_flights_reservations_on_flight_id"
@@ -40,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_041551) do
 
   create_table "payments", force: :cascade do |t|
     t.boolean "status"
-    t.integer "reservation_id", null: false
+    t.bigint "reservation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reservation_id"], name: "index_payments_on_reservation_id"
