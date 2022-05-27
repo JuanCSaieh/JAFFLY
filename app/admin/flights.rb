@@ -14,7 +14,7 @@ ActiveAdmin.register Flight do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  belongs_to :reservation
+
   permit_params :origin, :destination, :departure_time, :arrival_time, :airline_id, :price
   
 end
