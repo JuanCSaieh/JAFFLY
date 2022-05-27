@@ -18,19 +18,12 @@ class ReservationsController < ApplicationController
 				format.html { redirect_to reservations_path, notice: 'Your reservation item is now live' }
 			else
 				format.html { render :new }
-				format.json { render json: @comment.errors, status: :unprocessable_entity }
 			end
 		end
 	end
 
 	def show
 		set_reservation_item
-		if set_reservation_item.id
-			User.find(current_user.id).update(defaultReservation: set_reservation_item.id)
-			respond_to do |format|
-				format.html { redirect_to flights_path, notice: 'Current Reservation has been changed.' }
-			end
-		end
 	end
 
 	def edit
@@ -58,6 +51,25 @@ class ReservationsController < ApplicationController
 		end
 	end
 
+	def change
+		set_reservation_item
+		if @reservation_item
+			User.find(current_user.id).update(defaultReservation: set_reservation_item.id)
+			respond_to do |format|
+				format.html { redirect_to flights_path, notice: 'Current Reservation has been changed.' }
+			end
+		end
+	end
+
+	def payment
+		set_reservation_item
+		if @reservation_item
+			@reservation_item.update(paymentStatus: true)
+			respond_to do |format|
+				format.html { redirect_to reservations_path, notice: 'Gracias por su Pago.' }
+			end
+		end
+	end
 
 
 	private

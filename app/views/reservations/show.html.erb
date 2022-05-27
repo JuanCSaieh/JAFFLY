@@ -1,0 +1,31 @@
+<div class="row mb-3 justify-content-md-center">
+    <div class="text-center">
+        <h2>Titulo de Reserva: <%= @reservation_item.name %></h2>
+    </div>
+    <div class="text-center">
+        <h3>Precio Total: <%= @reservation_item.value %></h2>
+    </div>
+    <!-- PAY BUTTON -->
+</div>
+
+<table class="table">
+  <tr>
+    <th scope="col">Aerolinea</th>
+    <th scope="col">Origen</th>
+    <th scope="col">Destino</th>
+    <th scope="col">Hora Salida</th>
+    <th scope="col">Hora Llegada</th>
+    <th scope="col">Precio</th>
+  </tr>
+
+  <% @reservation_item.flights.each do |flight| %>
+  <tr>
+    <td><%= flight.airline.title %></td>
+    <td><%= flight.origin %></td>
+    <td><%= flight.destination %></td>
+    <td><%= flight.departure_time %></td>
+    <td><%= flight.arrival_time %></td>
+    <td><%= flight.price %></td>
+  </tr>
+  <% end %>
+</table>

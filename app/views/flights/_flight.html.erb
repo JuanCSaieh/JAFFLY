@@ -5,5 +5,5 @@
   <td><%= Time.at(flight.departure_time) %></td>
   <td><%= Time.at(flight.arrival_time) %></td>
   <td><%= number_to_currency(flight.price, :unit => "$") %></td>
-  <td><%= link_to 'Agregar' if current_user %></td>
+  <td><%= link_to 'Agregar Vuelo', edit_flight_path(flight) if current_user %></td>
 </tr>

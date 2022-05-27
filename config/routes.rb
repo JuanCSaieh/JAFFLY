@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resources :flights
   resources :reservations
+
+  get 'reservations(/:id)/change', to: 'reservations#change', as: :change
+  get 'reservations(/:id)/payment', to: 'reservations#payment', as: :payment
 end

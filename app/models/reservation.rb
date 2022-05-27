@@ -4,10 +4,10 @@ class Reservation < ApplicationRecord
   has_one :payment
 
   validates :name, presence: true
-  after_update :calculate_price
+  before_save :calculate_price
 
   private
   def calculate_price
-   self.value = self.flights.select(:price).to_json.sum{|h| h[:price] } if self.flights
+      self.value = self.flights.select(:price).sum{|flight| flight[:price] } if self.flights
   end
 end
