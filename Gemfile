@@ -49,6 +49,8 @@ gem "bootsnap", require: false
 
 gem "devise"
 gem 'byebug', '~> 9.0', '>= 9.0.6'
+gem 'activeadmin'
+gem 'sass-rails'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
