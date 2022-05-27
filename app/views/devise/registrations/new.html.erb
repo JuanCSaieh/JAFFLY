@@ -11,10 +11,10 @@
 	</div>
 
 	<div class="row mb-3 justify-content-md-center">
-		<!-- <div class="col-3">
-	     	TODO: Name add name to user
-			<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "exampleFormControlInput1", placeholder: "Email Adress" %>
-		</div> -->
+		<div class="col-3">
+			<%= f.label :name %><br />
+			<%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", id: "exampleFormControlInput1", placeholder: "Name" %>
+		</div>
 
 		<div class="col-3">
 			<%= f.label :email %><br />
